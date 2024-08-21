@@ -14,7 +14,9 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.error(err));
 
-
+app.get("/",()=>{
+    res.send("whatsApp ChatBot app")
+})
 
 const sendWaterUsagePrompt = () => {
     client.messages.create({
