@@ -66,6 +66,7 @@ const saveToExcel = (value) => {
     try {
         workbook = xlsx.readFile(fileName);
     } catch (e) {
+        console.error('Error reading file:', e);
         workbook = xlsx.utils.book_new();
     }
 
@@ -83,8 +84,14 @@ const saveToExcel = (value) => {
 
     worksheet = xlsx.utils.aoa_to_sheet(data);
     workbook.Sheets[sheetName] = worksheet;
-    xlsx.writeFile(workbook, fileName);
+    try {
+        xlsx.writeFile(workbook, fileName);
+        console.log('File written successfully');
+    } catch (error) {
+        console.error('Error writing file:', error);
+    }
 };
+
 
 // Start the server
 const PORT = process.env.PORT || 3000;
