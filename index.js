@@ -14,7 +14,7 @@ mongoose.connect(process.env.MONGO_URI)
     .then(() => console.log('MongoDB connected...'))
     .catch(err => console.error(err));
 
-app.get("/",()=>{
+app.get("/",(req,res)=>{
     res.send("whatsApp ChatBot app")
 })
 
